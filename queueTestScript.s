@@ -1,4 +1,4 @@
 #!/bin/bash
 
-g++ -c CommandQueue2.cpp
+g++ -Wall Command.cc CommandManager.cc  test.cc -o test
 
