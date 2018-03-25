@@ -1,11 +1,12 @@
 ﻿// QSET Command Queue (implemented using a priority queue)
 
 #include <queue>
-#include <function>
+// #include <function>
+#include <time.h>
 
-enum class CommandType {
-	Payload1(),
-    Payload2()
+enum CommandType {
+	Payload1,
+	Payload2
 };
 
 // these are the objects that are going to be held by the queue
@@ -54,9 +55,12 @@ class CommandManager {
     Command executeTopCommand() {
         Command command;
         if (lowPriority.empty()) {  // if the queues are empty, run DefaultMode() always
-            command = DefaultMode();
+		// we need to write DefaultMode()
+            // command = DefaultMode();
         } else {
-            command = lowPriority.pop();
+		// C++ doesn't return a value when we pop from a queue
+		command = lowPriority.front();
+            lowPriority.pop();
         }
         return command;
     }
